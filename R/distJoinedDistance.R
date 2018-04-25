@@ -56,7 +56,7 @@ Models.dist.join <- function(models, distance=RegressionResult.dist.default, joi
    # compute the distances and normalize them
    distances <- vapply(X=storage, FUN=join, FUN.VALUE=+Inf);
    md <- max(distances);
-   if(md > 0d) { distances /= md; }
+   if(md > 0) { distances <- distances / md; }
 
     # create the distance matrix by computing the distance means
    res <- dist.create(distances=distances,
