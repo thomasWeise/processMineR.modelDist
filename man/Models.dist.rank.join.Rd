@@ -5,17 +5,17 @@
 \title{Create a Distance Matrix Corresponding to the Joined Result of the
   Ranked Model Distances}
 \usage{
-Models.dist.rank.join(results, distance = RegressionResult.dist.default,
+Models.dist.rank.join(models, distance = RegressionResult.dist.default,
   join = mean, cores = 1L)
 }
 \arguments{
-\item{results}{the \code{\link[processMineR.models]{Models}} records}
+\item{models}{the \code{\link[processMineR.models]{Models}} records}
 
 \item{distance}{the
 \code{\link[regressoR]{RegressionResult}}-to-\code{\link[regressoR]{RegressionResult}}
  distance metric}
 
-\item{join}{the function used for joining the results created by
+\item{join}{the function used for joining the models created by
 \code{distance}}
 
 \item{cores}{the number of CPU cores to use}

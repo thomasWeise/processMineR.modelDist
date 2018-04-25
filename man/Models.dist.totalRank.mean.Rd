@@ -5,11 +5,11 @@
 \title{Create a Distance Matrix Corresponding to the Mean of the Model
   Distances}
 \usage{
-Models.dist.totalRank.mean(results, distance = RegressionResult.dist.default,
+Models.dist.totalRank.mean(models, distance = RegressionResult.dist.default,
   cores = 1L)
 }
 \arguments{
-\item{results}{the \code{\link[processMineR.models]{Models}} records}
+\item{models}{the \code{\link[processMineR.models]{Models}} records}
 
 \item{distance}{the
 \code{\link[regressoR]{RegressionResult}}-to-\code{\link[regressoR]{RegressionResult}}

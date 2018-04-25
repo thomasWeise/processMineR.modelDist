@@ -9,11 +9,11 @@
 #'   distances between all the models and then rank them. These ranks are then
 #'   used instead of the actual distances to build the distance matrix.
 #'
-#' @param results the \code{\link[processMineR.models]{Models}} records
+#' @param models the \code{\link[processMineR.models]{Models}} records
 #' @param distance the
 #'   \code{\link[regressoR]{RegressionResult}}-to-\code{\link[regressoR]{RegressionResult}}
 #'    distance metric
-#' @param join the function used for joining the results created by
+#' @param join the function used for joining the models created by
 #'   \code{distance}
 #' @param cores the number of CPU cores to use
 #' @return an instance of \code{\link[stats]{dist}}
@@ -22,21 +22,21 @@
 #' @seealso Models.dist.totalRank.mean
 #' @seealso Models.dist.totalRank.median
 #' @importFrom parallel mclapply
-Models.dist.totalRank.join <- function(results, distance=RegressionResult.dist.default, join=mean, cores=1L) {
-  n <- length(results);
+Models.dist.totalRank.join <- function(models, distance=RegressionResult.dist.default, join=mean, cores=1L) {
+  n <- length(models);
   n.dist <- (n * (n - 1L)) / 2L;
 
   # compute how many distance values we will get per element
   sizes <- unlist(lapply(X=seq_len(n-1L), FUN=function(i) vapply(X=(i+1L):n,
-                  FUN=function(j,a) a*length(results[[j]]@results),
-                  FUN.VALUE=0L, a=length(results[[i]]@results))), recursive=TRUE);
+                  FUN=function(j,a) a*length(models[[j]]@models),
+                  FUN.VALUE=0L, a=length(models[[i]]@models))), recursive=TRUE);
   # allocate the temporary storage
   storage <- lapply(X=1L:n.dist, FUN=function(i) rep(+Inf, sizes[i]));
 
   # suppress warnings due to possible NaNs somewhere in the computation which will be fixed
   suppressWarnings({
-    # get all the results with protected models
-    deflated <- .deflate.results(results);
+    # get all the models with protected models
+    deflated <- .deflate.models(models);
     n.deflated <- length(deflated);
     squared <- ((n.deflated * (n.deflated - 1L)) / 2L);
 
@@ -72,7 +72,7 @@ Models.dist.totalRank.join <- function(results, distance=RegressionResult.dist.d
 
   # create the distance matrix by computing the distance means
  res <- dist.create(distances=vapply(X=storage, FUN=join, FUN.VALUE=+Inf),
-                    names=.names.results(results));
+                    names=.names.models(models));
 
  res <- force(res);
  return(res);
@@ -85,7 +85,7 @@ Models.dist.totalRank.join <- function(results, distance=RegressionResult.dist.d
 #'   Distances
 #' @description A distance matrix is constructed which represents the mean
 #'   distances between the models.
-#' @param results the \code{\link[processMineR.models]{Models}} records
+#' @param models the \code{\link[processMineR.models]{Models}} records
 #' @param distance the
 #'   \code{\link[regressoR]{RegressionResult}}-to-\code{\link[regressoR]{RegressionResult}}
 #'    distance metric
@@ -94,15 +94,15 @@ Models.dist.totalRank.join <- function(results, distance=RegressionResult.dist.d
 #' @export Models.dist.totalRank.mean
 #' @seealso Models.dist.totalRank.join
 #' @seealso Models.dist.totalRank.median
-Models.dist.totalRank.mean <- function(results, distance=RegressionResult.dist.default, cores=1L)
-  Models.dist.totalRank.join(results=results, distance=distance, join=mean, cores=cores)
+Models.dist.totalRank.mean <- function(models, distance=RegressionResult.dist.default, cores=1L)
+  Models.dist.totalRank.join(models=models, distance=distance, join=mean, cores=cores)
 
 
 #' @title Create a Distance Matrix Corresponding to the Median of the Model
 #'   Distances
 #' @description A distance matrix is constructed which represents the median
 #'   distances between the models.
-#' @param results the \code{\link[processMineR.models]{Models}} records
+#' @param models the \code{\link[processMineR.models]{Models}} records
 #' @param distance the
 #'   \code{\link[regressoR]{RegressionResult}}-to-\code{\link[regressoR]{RegressionResult}}
 #'    distance metric
@@ -113,5 +113,5 @@ Models.dist.totalRank.mean <- function(results, distance=RegressionResult.dist.d
 #' @seealso Models.dist.totalRank.join
 #' @seealso Models.dist.totalRank.mean
 #' @importClassesFrom processMineR.models Models
-Models.dist.totalRank.median <- function(results, distance=RegressionResult.dist.default, cores=1L)
-  Models.dist.totalRank.join(results=results, distance=distance, join=median, cores=cores)
+Models.dist.totalRank.median <- function(models, distance=RegressionResult.dist.default, cores=1L)
+  Models.dist.totalRank.join(models=models, distance=distance, join=median, cores=cores)

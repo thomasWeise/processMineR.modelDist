@@ -4,17 +4,17 @@
 \alias{Models.dist.default}
 \title{Create a Distance Matrix of Fitted Models}
 \usage{
-Models.dist.default(results, distance = RegressionResult.dist.default,
+Models.dist.default(models, distance = RegressionResult.dist.default,
   cores = 1L)
 }
 \arguments{
-\item{results}{the \code{\link[processMineR.models]{Models}} records}
-
 \item{distance}{the
 \code{\link[regressoR]{RegressionResult}}-to-\code{\link[regressoR]{RegressionResult}}
  distance metric}
 
 \item{cores}{the number of CPU cores to use}
+
+\item{results}{the \code{\link[processMineR.models]{Models}} records}
 }
 \value{
 an instance of \code{\link[stats]{dist}}
