@@ -4,7 +4,7 @@
 \alias{Models.dist.default}
 \title{Create a Distance Matrix of Fitted Models}
 \usage{
-Models.dist.default(results, distance = RegressorResult.dist.default,
+Models.dist.default(results, distance = RegressionResult.dist.default,
   cores = 1L)
 }
 \arguments{

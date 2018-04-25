@@ -22,7 +22,7 @@
 #' @seealso Models.dist.totalRank.mean
 #' @seealso Models.dist.totalRank.median
 #' @importFrom parallel mclapply
-Models.dist.totalRank.join <- function(results, distance=RegressorResult.dist.default, join=mean, cores=1L) {
+Models.dist.totalRank.join <- function(results, distance=RegressionResult.dist.default, join=mean, cores=1L) {
   n <- length(results);
   n.dist <- (n * (n - 1L)) / 2L;
 
@@ -94,7 +94,7 @@ Models.dist.totalRank.join <- function(results, distance=RegressorResult.dist.de
 #' @export Models.dist.totalRank.mean
 #' @seealso Models.dist.totalRank.join
 #' @seealso Models.dist.totalRank.median
-Models.dist.totalRank.mean <- function(results, distance=RegressorResult.dist.default, cores=1L)
+Models.dist.totalRank.mean <- function(results, distance=RegressionResult.dist.default, cores=1L)
   Models.dist.totalRank.join(results=results, distance=distance, join=mean, cores=cores)
 
 
@@ -113,5 +113,5 @@ Models.dist.totalRank.mean <- function(results, distance=RegressorResult.dist.de
 #' @seealso Models.dist.totalRank.join
 #' @seealso Models.dist.totalRank.mean
 #' @importClassesFrom processMineR.models Models
-Models.dist.totalRank.median <- function(results, distance=RegressorResult.dist.default, cores=1L)
+Models.dist.totalRank.median <- function(results, distance=RegressionResult.dist.default, cores=1L)
   Models.dist.totalRank.join(results=results, distance=distance, join=median, cores=cores)

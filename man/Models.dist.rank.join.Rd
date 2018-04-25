@@ -5,7 +5,7 @@
 \title{Create a Distance Matrix Corresponding to the Joined Result of the
   Ranked Model Distances}
 \usage{
-Models.dist.rank.join(results, distance = RegressorResult.dist.default,
+Models.dist.rank.join(results, distance = RegressionResult.dist.default,
   join = mean, cores = 1L)
 }
 \arguments{

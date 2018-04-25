@@ -23,7 +23,7 @@
 #' @seealso Models.dist.rank.mean
 #' @seealso Models.dist.rank.median
 #' @importClassesFrom processMineR.models Models
-Models.dist.rank.join <- function(results, distance=RegressorResult.dist.default, join=mean, cores=1L) {
+Models.dist.rank.join <- function(results, distance=RegressionResult.dist.default, join=mean, cores=1L) {
   n <- length(results);
   n.dist <- (n * (n - 1L)) / 2L;
 
@@ -122,7 +122,7 @@ Models.dist.rank.join <- function(results, distance=RegressorResult.dist.default
 #' @export Models.dist.rank.mean
 #' @seealso Models.dist.rank.join
 #' @seealso Models.dist.rank.median
-Models.dist.rank.mean <- function(results, distance=RegressorResult.dist.default, cores=1L)
+Models.dist.rank.mean <- function(results, distance=RegressionResult.dist.default, cores=1L)
   Models.dist.rank.join(results=results, distance=distance, join=mean, cores=cores)
 
 
@@ -140,5 +140,5 @@ Models.dist.rank.mean <- function(results, distance=RegressorResult.dist.default
 #' @export Models.dist.rank.median
 #' @seealso Models.dist.rank.join
 #' @seealso Models.dist.rank.mean
-Models.dist.rank.median <- function(results, distance=RegressorResult.dist.default, cores=1L)
+Models.dist.rank.median <- function(results, distance=RegressionResult.dist.default, cores=1L)
   Models.dist.rank.join(results=results, distance=distance, join=median, cores=cores)

@@ -5,7 +5,7 @@
 \title{Create a Distance Matrix Corresponding to the Mean of the Model
   Distances}
 \usage{
-Models.dist.rank.mean(results, distance = RegressorResult.dist.default,
+Models.dist.rank.mean(results, distance = RegressionResult.dist.default,
   cores = 1L)
 }
 \arguments{

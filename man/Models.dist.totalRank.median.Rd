@@ -5,8 +5,8 @@
 \title{Create a Distance Matrix Corresponding to the Median of the Model
   Distances}
 \usage{
-Models.dist.totalRank.median(results, distance = RegressorResult.dist.default,
-  cores = 1L)
+Models.dist.totalRank.median(results,
+  distance = RegressionResult.dist.default, cores = 1L)
 }
 \arguments{
 \item{results}{the \code{\link[processMineR.models]{Models}} records}
