@@ -22,7 +22,7 @@ an instance of \code{\link[stats]{dist}}
 \description{
 A distance matrix is constructed which represents the distances
   between the models. For each model. This method represents the default
-  approach for that, which current is \code{\link{model.dist.rank.mean}}.
+  approach for that, which current is \code{\link{Models.dist.rank.mean}}.
 }
 \seealso{
 Models.dist.rank.mean
