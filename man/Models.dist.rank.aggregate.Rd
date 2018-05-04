@@ -16,6 +16,11 @@ Models.dist.rank.aggregate(models, distance = RegressionResult.dist.default,
 \code{\link[regressoR]{RegressionResult}}-to-\code{\link[regressoR]{RegressionResult}}
  distance metric}
 
+\item{rank.all}{the ranking to be applied to all distances}
+
+\item{rank.fromSingle}{the ranking to be applied to all the distances from
+one specific sample to the other samples}
+
 \item{aggregate}{the function used for joining the models created by
 \code{distance}}
 

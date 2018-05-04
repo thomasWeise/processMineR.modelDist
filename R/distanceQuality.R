@@ -30,8 +30,8 @@ RegressionResult.dist.quality <- function(a, b) {
     q.ab <- q.ab - q.bb;
   } else {
     if(!is.finite(q.bb)) { q.bb <- +Inf; }
-    if(!is.finite(q.ab)) { q.ab <- +Inf; }
   }
+  if(!is.finite(q.ab)) { q.ab <- +Inf; }
 
   q.aa <- a@result@quality;
   q.ba <- a@metric@quality(b@result@f);
@@ -40,8 +40,8 @@ RegressionResult.dist.quality <- function(a, b) {
     q.ba <- q.ba - q.aa;
   } else {
     if(!is.finite(q.aa)) { q.aa <- +Inf; }
-    if(!is.finite(q.ba)) { q.ba <- +Inf; }
   }
+  if(!is.finite(q.ba)) { q.ba <- +Inf; }
 
 
   if(is.finite(q.ab)) {

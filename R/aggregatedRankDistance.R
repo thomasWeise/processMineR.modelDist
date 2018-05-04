@@ -11,6 +11,9 @@
 #' @param distance the
 #'   \code{\link[regressoR]{RegressionResult}}-to-\code{\link[regressoR]{RegressionResult}}
 #'    distance metric
+#' @param rank.all the ranking to be applied to all distances
+#' @param rank.fromSingle the ranking to be applied to all the distances from
+#'   one specific sample to the other samples
 #' @param aggregate the function used for joining the models created by
 #'   \code{distance}
 #' @param cores the number of CPU cores to use
