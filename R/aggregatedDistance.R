@@ -19,9 +19,11 @@
 #' @importClassesFrom processMineR.models Models
 #' @importFrom processMineR.models Models.names
 #' @importFrom distanceR dist.apply.samples dist.create
+#' @include prepare.R
 Models.dist.aggregate <- function(models, distance=RegressionResult.dist.default, aggregate=mean, cores=1L) {
   suppressWarnings({
-    distances <- dist.apply.samples(X=models, FUN=distance,
+    distances <- dist.apply.samples(X=.prepare(models),
+                                    FUN=distance,
                                     sampler=function(model) model@models,
                                     aggregate=aggregate,
                                     FUN.VALUE=+Inf,

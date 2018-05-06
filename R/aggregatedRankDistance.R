@@ -25,13 +25,15 @@
 #' @importClassesFrom processMineR.models Models
 #' @importFrom processMineR.models Models.names
 #' @importFrom distanceR dist.apply.samples.ranked rank.dist dist.create
+#' @include prepare.R
 Models.dist.rank.aggregate <- function(models,
                                        distance=RegressionResult.dist.default,
                                        rank.all=rank.dist,
                                        rank.fromSingle=identity,
                                        aggregate=mean, cores=1L) {
   suppressWarnings({
-    distances <- dist.apply.samples.ranked(X=models, FUN=distance,
+    distances <- dist.apply.samples.ranked(X=.prepare(models),
+                                           FUN=distance,
                                            sampler=function(model) model@models,
                                            aggregate=aggregate,
                                            rank.all=rank.all,

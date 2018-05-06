@@ -27,6 +27,7 @@ Remotes: github::thomasWeise/distanceR,
 ByteCompile: true
 RoxygenNote: 6.0.1.9000
 Collate: 
+    'prepare.R'
     'distanceQuality.R'
     'distanceDefault.R'
     'aggregatedDistance.R'
