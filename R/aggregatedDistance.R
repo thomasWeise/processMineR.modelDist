@@ -11,6 +11,7 @@
 #' @param aggregate the function used for joining the models created by
 #'   \code{distance}
 #' @param cores the number of CPU cores to use (ignored)
+#' @param logging the logging setup, see \code{\link[utilizeR]{makeLogger}}
 #' @return an instance of \code{\link[stats]{dist}}
 #' @export Models.dist.aggregate
 #' @importFrom stats dist
@@ -20,14 +21,16 @@
 #' @importFrom processMineR.models Models.names
 #' @importFrom distanceR dist.apply.samples dist.create
 #' @include prepare.R
-Models.dist.aggregate <- function(models, distance=RegressionResult.dist.default, aggregate=mean, cores=1L) {
+Models.dist.aggregate <- function(models, distance=RegressionResult.dist.default,
+                                  aggregate=mean, cores=1L, logging=FALSE) {
   suppressWarnings({
     distances <- dist.apply.samples(X=.prepare(models),
                                     FUN=distance,
                                     sampler=function(model) model@models,
                                     aggregate=aggregate,
                                     FUN.VALUE=+Inf,
-                                    cores=cores);
+                                    cores=cores,
+                                    logging=logging);
   })
   distances <- force(distances);
   ret <- dist.create(distances, Models.names(models));
@@ -45,12 +48,15 @@ Models.dist.aggregate <- function(models, distance=RegressionResult.dist.default
 #'   \code{\link[regressoR]{RegressionResult}}-to-\code{\link[regressoR]{RegressionResult}}
 #'    distance metric
 #' @param cores the number of CPU cores to use (ignored)
+#' @param logging the logging setup, see \code{\link[utilizeR]{makeLogger}}
 #' @return an instance of \code{\link[stats]{dist}}
 #' @export Models.dist.mean
 #' @seealso Models.dist.aggregate
 #' @seealso Models.dist.median
-Models.dist.mean <- function(models, distance=RegressionResult.dist.default, cores=1L)
-  Models.dist.aggregate(models=models, distance=distance, aggregate=mean, cores=cores)
+Models.dist.mean <- function(models, distance=RegressionResult.dist.default,
+                             cores=1L, logging=FALSE)
+  Models.dist.aggregate(models=models, distance=distance, aggregate=mean,
+                        cores=cores, logging=logging)
 
 
 #' @title Create a Distance Matrix Corresponding to the Median of the Model
@@ -62,10 +68,13 @@ Models.dist.mean <- function(models, distance=RegressionResult.dist.default, cor
 #'   \code{\link[regressoR]{RegressionResult}}-to-\code{\link[regressoR]{RegressionResult}}
 #'    distance metric
 #' @param cores the number of CPU cores to use (ignored)
+#' @param logging the logging setup, see \code{\link[utilizeR]{makeLogger}}
 #' @return an instance of \code{\link[stats]{dist}}
 #' @importFrom stats median
 #' @export Models.dist.median
 #' @seealso Models.dist.aggregate
 #' @seealso Models.dist.mean
-Models.dist.median <- function(models, distance=RegressionResult.dist.default, cores=1L)
-  Models.dist.aggregate(models=models, distance=distance, aggregate=median, cores=cores)
+Models.dist.median <- function(models, distance=RegressionResult.dist.default,
+                               cores=1L, logging=FALSE)
+  Models.dist.aggregate(models=models, distance=distance, aggregate=median,
+                        cores=cores, logging=logging)

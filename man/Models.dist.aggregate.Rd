@@ -6,7 +6,7 @@
   Model Distances}
 \usage{
 Models.dist.aggregate(models, distance = RegressionResult.dist.default,
-  aggregate = mean, cores = 1L)
+  aggregate = mean, cores = 1L, logging = FALSE)
 }
 \arguments{
 \item{models}{the \code{\link[processMineR.models]{Models}} records}
@@ -19,6 +19,8 @@ Models.dist.aggregate(models, distance = RegressionResult.dist.default,
 \code{distance}}
 
 \item{cores}{the number of CPU cores to use (ignored)}
+
+\item{logging}{the logging setup, see \code{\link[utilizeR]{makeLogger}}}
 }
 \value{
 an instance of \code{\link[stats]{dist}}

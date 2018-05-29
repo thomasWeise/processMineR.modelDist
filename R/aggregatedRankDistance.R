@@ -17,6 +17,7 @@
 #' @param aggregate the function used for joining the models created by
 #'   \code{distance}
 #' @param cores the number of CPU cores to use
+#' @param logging the logging setup, see \code{\link[utilizeR]{makeLogger}}
 #' @return an instance of \code{\link[stats]{dist}}
 #' @export Models.dist.rank.aggregate
 #' @importFrom stats dist
@@ -30,7 +31,8 @@ Models.dist.rank.aggregate <- function(models,
                                        distance=RegressionResult.dist.default,
                                        rank.all=rank.dist,
                                        rank.fromSingle=identity,
-                                       aggregate=mean, cores=1L) {
+                                       aggregate=mean, cores=1L,
+                                       logging=FALSE) {
   suppressWarnings({
     distances <- dist.apply.samples.ranked(X=.prepare(models),
                                            FUN=distance,
@@ -39,7 +41,8 @@ Models.dist.rank.aggregate <- function(models,
                                            rank.all=rank.all,
                                            rank.fromSingle=rank.fromSingle,
                                            FUN.VALUE=+Inf,
-                                           cores=cores);
+                                           cores=cores,
+                                           logging=logging);
   })
   distances <- force(distances);
   ret <- dist.create(distances, Models.names(models));
@@ -62,15 +65,18 @@ Models.dist.rank.aggregate <- function(models,
 #'   \code{\link[regressoR]{RegressionResult}}-to-\code{\link[regressoR]{RegressionResult}}
 #'    distance metric
 #' @param cores the number of CPU cores to use
+#' @param logging the logging setup, see \code{\link[utilizeR]{makeLogger}}
 #' @return an instance of \code{\link[stats]{dist}}
 #' @export Models.dist.rank.global.mean
 #' @seealso Models.dist.rank.aggregate
 #' @seealso Models.dist.rank.local.mean
-Models.dist.rank.global.mean <- function(models, distance=RegressionResult.dist.default, cores=1L)
+Models.dist.rank.global.mean <- function(models, distance=RegressionResult.dist.default,
+                                         cores=1L, logging=FALSE)
   Models.dist.rank.aggregate(models=models, distance=distance,
                              rank.all=rank.dist,
                              rank.fromSingle=identity,
-                             aggregate=mean, cores=cores)
+                             aggregate=mean, cores=cores,
+                             logging=logging)
 
 #' @title Create a Distance Matrix Corresponding to the Mean Ranks of the
 #'   Distances from Each Model to any other Model
@@ -84,12 +90,15 @@ Models.dist.rank.global.mean <- function(models, distance=RegressionResult.dist.
 #'   \code{\link[regressoR]{RegressionResult}}-to-\code{\link[regressoR]{RegressionResult}}
 #'    distance metric
 #' @param cores the number of CPU cores to use
+#' @param logging the logging setup, see \code{\link[utilizeR]{makeLogger}}
 #' @return an instance of \code{\link[stats]{dist}}
 #' @export Models.dist.rank.local.mean
 #' @seealso Models.dist.rank.aggregate
 #' @seealso Models.dist.rank.global.mean
-Models.dist.rank.local.mean <- function(models, distance=RegressionResult.dist.default, cores=1L)
+Models.dist.rank.local.mean <- function(models, distance=RegressionResult.dist.default,
+                                        cores=1L, logging=FALSE)
   Models.dist.rank.aggregate(models=models, distance=distance,
                              rank.all=identity,
                              rank.fromSingle=rank.dist,
-                             aggregate=mean, cores=cores)
+                             aggregate=mean, cores=cores,
+                             logging=logging)

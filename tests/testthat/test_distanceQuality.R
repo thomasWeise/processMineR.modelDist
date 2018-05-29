@@ -19,6 +19,7 @@ library(regressoR)
 
 
 .make.data <- function() {
+  set.seed(1255L);
   dir <- tempfile();
   dir.create(dir, showWarnings=FALSE, recursive=TRUE);
 

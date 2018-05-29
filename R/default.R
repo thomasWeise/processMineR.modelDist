@@ -10,6 +10,7 @@
 #'   \code{\link[regressoR]{RegressionResult}}-to-\code{\link[regressoR]{RegressionResult}}
 #'    distance metric
 #' @param cores the number of CPU cores to use
+#' @param logging the logging setup, see \code{\link[utilizeR]{makeLogger}}
 #' @return an instance of \code{\link[stats]{dist}}
 #' @export Models.dist.default
 #' @seealso Models.dist.rank.mean
