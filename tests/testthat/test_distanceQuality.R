@@ -36,8 +36,6 @@ library(regressoR)
   .file.make.2(dir.a, "3.txt", function(x) -4+7*x*x);
   .file.make.2(dir.a, "4.txt", function(x) 2+10*x-x*x);
   .file.make.2(dir.a, "5.txt", function(x) x*x-5);
-  .file.make.2(dir.a, "6.txt", function(x) x*x-2*x-1);
-  .file.make.2(dir.a, "7.txt", function(x) 7+0.1*x);
 
   return(c(dir, results));
 }

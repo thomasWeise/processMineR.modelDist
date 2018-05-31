@@ -12,8 +12,11 @@ library(regressoR)
 }
 
 .file.make.2 <- function(dir, name, f) {
-  x <- sort(unique(c(runif(n=as.integer(runif(n=1, min=3, max=10)), min=1, max=6),
-                     runif(n=as.integer(runif(n=1, min=3, max=10)), min=1, max=50))));
+  repeat {
+    x <- sort(unique(c(runif(n=4L, min=1, max=6),
+                       runif(n=4L, min=1, max=50))));
+    if(length(x) >= 8L) { break; }
+  }
   .file.make(dir, name, x, f(x));
 }
 
@@ -33,8 +36,6 @@ library(regressoR)
   .file.make.2(dir.a, "3.txt", function(x) -4+7*x*x);
   .file.make.2(dir.a, "4.txt", function(x) 2+10*x-x*x);
   .file.make.2(dir.a, "5.txt", function(x) x*x-5);
-  .file.make.2(dir.a, "6.txt", function(x) x*x-2*x-1);
-  .file.make.2(dir.a, "7.txt", function(x) 7+0.1*x);
 
   return(c(dir, results));
 }
