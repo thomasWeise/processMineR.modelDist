@@ -12,8 +12,8 @@ library(regressoR)
 }
 
 .file.make.2 <- function(dir, name, f) {
-  x <- sort(unique(c(runif(n=as.integer(runif(n=1, min=5, max=21)), min=1, max=6),
-                     runif(n=as.integer(runif(n=1, min=5, max=21)), min=1, max=50))));
+  x <- sort(unique(c(runif(n=as.integer(runif(n=1, min=3, max=10)), min=1, max=6),
+                     runif(n=as.integer(runif(n=1, min=3, max=10)), min=1, max=50))));
   .file.make(dir, name, x, f(x));
 }
 
@@ -56,7 +56,7 @@ test_that("Test dist.quality ", {
       if(identical(res.1, res.2)) {
         expect_identical(dist, 0);
       } else {
-        expect_gte(dist, 0);
+        expect_gt(dist, 0);
       }
     }
   })
