@@ -12,8 +12,11 @@ library(regressoR)
 }
 
 .file.make.2 <- function(dir, name, f) {
-  x <- sort(unique(c(runif(n=as.integer(runif(n=1, min=2, max=5)), min=1, max=6),
-                     runif(n=as.integer(runif(n=1, min=2, max=5)), min=1, max=50))));
+  repeat {
+    x <- sort(unique(c(runif(n=4L, min=1, max=6),
+                       runif(n=4L, min=1, max=50))));
+    if(length(x) >= 8L) { break; }
+  }
   .file.make(dir, name, x, f(x));
 }
 
