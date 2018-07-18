@@ -14,5 +14,5 @@
 #' @return an instance of \code{\link[stats]{dist}}
 #' @export Models.dist.default
 #' @seealso Models.dist.rank.mean
-#' @importClassesFrom processMineR.models Models
+#' @importClassesFrom dataManageR dataset
 Models.dist.default <- Models.dist.rank.local.mean

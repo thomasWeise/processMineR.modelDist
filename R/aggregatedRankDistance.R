@@ -23,8 +23,8 @@
 #' @importFrom stats dist
 #' @seealso Models.dist.rank.mean
 #' @seealso Models.dist.rank.median
-#' @importClassesFrom processMineR.models Models
-#' @importFrom processMineR.models Models.names
+#' @importClassesFrom dataManageR dataset
+#' @importFrom dataManageR datasets.names.get
 #' @importFrom distanceR dist.apply.samples.ranked rank.dist dist.create
 #' @include prepare.R
 Models.dist.rank.aggregate <- function(models,
@@ -36,7 +36,7 @@ Models.dist.rank.aggregate <- function(models,
   suppressWarnings({
     distances <- dist.apply.samples.ranked(X=.prepare(models),
                                            FUN=distance,
-                                           sampler=function(model) model@models,
+                                           sampler=function(model) model@data,
                                            aggregate=aggregate,
                                            rank.all=rank.all,
                                            rank.fromSingle=rank.fromSingle,

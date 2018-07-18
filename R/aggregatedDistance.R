@@ -17,8 +17,8 @@
 #' @importFrom stats dist
 #' @seealso Models.dist.mean
 #' @seealso Models.dist.median
-#' @importClassesFrom processMineR.models Models
-#' @importFrom processMineR.models Models.names
+#' @importClassesFrom dataManageR dataset
+#' @importFrom dataManageR datasets.names.get
 #' @importFrom distanceR dist.apply.samples dist.create
 #' @include prepare.R
 Models.dist.aggregate <- function(models, distance=RegressionResult.dist.default,
@@ -26,14 +26,14 @@ Models.dist.aggregate <- function(models, distance=RegressionResult.dist.default
   suppressWarnings({
     distances <- dist.apply.samples(X=.prepare(models),
                                     FUN=distance,
-                                    sampler=function(model) model@models,
+                                    sampler=function(model) model@data,
                                     aggregate=aggregate,
                                     FUN.VALUE=+Inf,
                                     cores=cores,
                                     logging=logging);
   })
   distances <- force(distances);
-  ret <- dist.create(distances, Models.names(models));
+  ret <- dist.create(distances, datasets.names.get(models));
   ret <- force(ret);
   return(ret);
 }
