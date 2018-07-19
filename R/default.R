@@ -5,7 +5,7 @@
 #' @description A distance matrix is constructed which represents the distances
 #'   between the models. For each model. This method represents the default
 #'   approach for that, which current is \code{\link{Models.dist.rank.local.mean}}.
-#' @param models the \code{\link[processMineR.models]{Models}} records
+#' @param models the models records
 #' @param distance the
 #'   \code{\link[regressoR]{RegressionResult}}-to-\code{\link[regressoR]{RegressionResult}}
 #'    distance metric

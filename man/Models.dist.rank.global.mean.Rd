@@ -9,7 +9,7 @@ Models.dist.rank.global.mean(models, distance = RegressionResult.dist.default,
   cores = 1L, logging = FALSE)
 }
 \arguments{
-\item{models}{the \code{\link[processMineR.models]{Models}} records}
+\item{models}{the models records}
 
 \item{distance}{the
 \code{\link[regressoR]{RegressionResult}}-to-\code{\link[regressoR]{RegressionResult}}
@@ -24,11 +24,10 @@ an instance of \code{\link[stats]{dist}}
 }
 \description{
 First we compute the distances between all models not in the
-  same \code{\link[processMineR.models]{Models}} set. These distances are
-  then ranked using the normalizing ranking method
-  \code{\link[distanceR]{rank.dist}}. The distance of one
-  \code{\link[processMineR.models]{Models}} set to another model set is then
-  the mean of the corresponding ranks.
+  same models set. These distances are then ranked using the normalizing
+  ranking method \code{\link[distanceR]{rank.dist}}. The distance of one
+  models set to another model set is then the mean of the corresponding
+  ranks.
 }
 \seealso{
 Models.dist.rank.aggregate

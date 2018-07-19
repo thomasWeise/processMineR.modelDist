@@ -4,7 +4,7 @@
 #'   Model Distances
 #' @description A distance matrix is constructed which represents the aggregated
 #'   distances between the Models.
-#' @param models the \code{\link[processMineR.models]{Models}} records
+#' @param models the models records
 #' @param distance the
 #'   \code{\link[regressoR]{RegressionResult}}-to-\code{\link[regressoR]{RegressionResult}}
 #'    distance metric
@@ -43,7 +43,7 @@ Models.dist.aggregate <- function(models, distance=RegressionResult.dist.default
 #'   Distances
 #' @description A distance matrix is constructed which represents the mean
 #'   distances between the Models.
-#' @param models the \code{\link[processMineR.models]{Models}} records
+#' @param models the models records
 #' @param distance the
 #'   \code{\link[regressoR]{RegressionResult}}-to-\code{\link[regressoR]{RegressionResult}}
 #'    distance metric
@@ -63,7 +63,7 @@ Models.dist.mean <- function(models, distance=RegressionResult.dist.default,
 #'   Distances
 #' @description A distance matrix is constructed which represents the median
 #'   distances between the Models.
-#' @param models the \code{\link[processMineR.models]{Models}} records
+#' @param models the models records
 #' @param distance the
 #'   \code{\link[regressoR]{RegressionResult}}-to-\code{\link[regressoR]{RegressionResult}}
 #'    distance metric

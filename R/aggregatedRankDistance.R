@@ -7,7 +7,7 @@
 #'   ranked distances between the models. This should be robust against some odd
 #'   outliers.
 #'
-#' @param models the \code{\link[processMineR.models]{Models}} records
+#' @param models the Models records
 #' @param distance the
 #'   \code{\link[regressoR]{RegressionResult}}-to-\code{\link[regressoR]{RegressionResult}}
 #'    distance metric
@@ -55,12 +55,11 @@ Models.dist.rank.aggregate <- function(models,
 #' @title Create a Distance Matrix Corresponding to the Mean Ranks over all
 #'   Model Distances
 #' @description First we compute the distances between all models not in the
-#'   same \code{\link[processMineR.models]{Models}} set. These distances are
-#'   then ranked using the normalizing ranking method
-#'   \code{\link[distanceR]{rank.dist}}. The distance of one
-#'   \code{\link[processMineR.models]{Models}} set to another model set is then
-#'   the mean of the corresponding ranks.
-#' @param models the \code{\link[processMineR.models]{Models}} records
+#'   same models set. These distances are then ranked using the normalizing
+#'   ranking method \code{\link[distanceR]{rank.dist}}. The distance of one
+#'   models set to another model set is then the mean of the corresponding
+#'   ranks.
+#' @param models the models records
 #' @param distance the
 #'   \code{\link[regressoR]{RegressionResult}}-to-\code{\link[regressoR]{RegressionResult}}
 #'    distance metric
@@ -82,10 +81,9 @@ Models.dist.rank.global.mean <- function(models, distance=RegressionResult.dist.
 #'   Distances from Each Model to any other Model
 #' @description For each model \code{M} we compute the distances to all other
 #'   models. These distances are then ranked using the normalizing ranking
-#'   method \code{\link[distanceR]{rank.dist}}. The distance of one
-#'   \code{\link[processMineR.models]{Models}} set to another model set is then
-#'   the mean of the corresponding ranks.
-#' @param models the \code{\link[processMineR.models]{Models}} records
+#'   method \code{\link[distanceR]{rank.dist}}. The distance of one models set
+#'   to another model set is then the mean of the corresponding ranks.
+#' @param models the models records
 #' @param distance the
 #'   \code{\link[regressoR]{RegressionResult}}-to-\code{\link[regressoR]{RegressionResult}}
 #'    distance metric

@@ -9,7 +9,7 @@ Models.dist.mean(models, distance = RegressionResult.dist.default,
   cores = 1L, logging = FALSE)
 }
 \arguments{
-\item{models}{the \code{\link[processMineR.models]{Models}} records}
+\item{models}{the models records}
 
 \item{distance}{the
 \code{\link[regressoR]{RegressionResult}}-to-\code{\link[regressoR]{RegressionResult}}
