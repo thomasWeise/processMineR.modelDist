@@ -1,7 +1,7 @@
 Package: processMineR.modelDist
 Type: Package
 Title: An R Package for Computing Distance Matrices from Models
-Version: 0.8.5
+Version: 0.8.6
 Author: Dr. Thomas Weise <tweise@hfuu.edu.cn>
 Maintainer: Dr. Thomas Weise <tweise@hfuu.edu.cn>
 Description: With this package we can build distance matrices based on models obtained via the \code{regressoR} package and processed with the \code{processMineR.models} package.
@@ -11,11 +11,11 @@ LazyData: true
 URL: http://www.github.com/thomasWeise/processMineR.modelDist
 BugReports: http://www.github.com/thomasWeise/processMineR.modelDist/issues
 Imports: dataManageR (>= 0.8.0),
-         distanceR (>= 0.8.2),
+         distanceR (>= 0.8.3),
          methods (>= 3.3.2),
          processMineR.models (>= 0.8.4),
-         regressoR (>= 0.8.10),
-         regressoR.base (>= 0.8.8),
+         regressoR (>= 0.8.12),
+         regressoR.base (>= 0.8.9),
          stats (>= 3.3.2),
          utilizeR (>= 0.8.4)
 Suggests: testthat (>= 2.0.0),
